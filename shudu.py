@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-
 matrix=[list(".4..63..."),##专家
       list(".8.....26"),
       list("...1....."),
@@ -48,36 +47,6 @@ def fresh(matrix,row,col):
     basic_broad(matrix,create_col(col),tar)
     basic_broad(matrix,create_block(row,col),tar)
 
-def fresh_i(task,i,vallist,indexlist):
-    for j in range(9):
-        if j not in set(indexlist):
-            if len(task[i][j])>1:
-                for val in vallist:
-                    task[i][j]=task[i][j].replace(val,"")
-                if len(task[i][j])==1:
-                    fresh(task,i,j)
-def fresh_j(task,j,vallist,indexlist):
-    for i in range(9):
-        if i not in set(indexlist):
-            if len(task[i][j])>1:
-                for val in vallist:
-                    task[i][j]=task[i][j].replace(val,"")
-                if len(task[i][j])==1:
-                    fresh(task,i,j)
-def fresh_block(task,k,vallist,indexlist):
-    block_i,block_j=k//3,k%3
-    for i in range(9):
-        if i not in set(indexlist):
-            position_i,position_j=i//3,i%3
-            if len(task[block_i*3+position_i][block_j*3+position_j])>1:
-                for val in vallist:
-                    task[block_i*3+position_i][block_j*3+position_j]=task[block_i*3+position_i][block_j*3+position_j].replace(val,"")
-                if len(task[block_i*3+position_i][block_j*3+position_j])==1:
-                    fresh(task,block_i*3+position_i,block_j*3+position_j)
-                    
-
-
-# In[26]:
 
 
 def total_length(matrix):
@@ -227,7 +196,7 @@ def guessanumber(task):
 def solve_shudu(matrix):
 	init(matrix)
 	while not is_finish(matrix):
-	    oldsum=700
+	    oldsum=800
 	    while oldsum!=total_length(matrix):
 	        oldsum=total_length(matrix)
 	        clear_once(matrix)
