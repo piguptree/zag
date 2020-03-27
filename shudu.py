@@ -14,22 +14,6 @@ matrix=[list(".4..63..."),##专家
 
 
 
-init(matrix)
-while not is_finish(matrix):
-    oldsum=700
-    while oldsum!=total_length(matrix):
-        oldsum=total_length(matrix)
-        clear_once(matrix)
-    if oldsum!=81:
-        guessanumber(matrix)
-            
-print(total_length(matrix))
-matrix
-
-
-# In[28]:
-
-
 def init(matrix):
     for i in range(9):
         for j in range(9):
@@ -239,4 +223,16 @@ def guessanumber(task):
                 break
             if len(task[i][j])==2:
                 state=guess(task,i,j)
+
+def solve_shudu(matrix):
+	init(matrix)
+	while not is_finish(matrix):
+	    oldsum=700
+	    while oldsum!=total_length(matrix):
+	        oldsum=total_length(matrix)
+	        clear_once(matrix)
+	    if oldsum!=81:
+	        guessanumber(matrix)        
+	print(matrix)
+	return matrix
                     
