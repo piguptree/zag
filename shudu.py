@@ -2,11 +2,11 @@
 # coding: utf-8
 
 class solver(object):
-	def __init__(self, matrix=None):
+	def __init__(self,matrix=None):
 		"""
 		matrix为一个字符串列表
 		"""
-		if not matrix:
+		if matrix is None:
 			matrix=[".4..63...",##专家
 					".8.....26",
 					"...1.....",
@@ -16,8 +16,7 @@ class solver(object):
 					"...7..3..",
 					"..4.5....",
 					"9......71"]
-		else:
-			self.matrix=[list(row) for row in matrix]
+		self.matrix=[list(row) for row in matrix]
 		for row in self.matrix:
 			print(row)
 
@@ -115,7 +114,8 @@ class solver(object):
 				row_unique,col_unique=num_unsure_position[k][0]
 				self.matrix[row_unique][col_unique]=num_unsure[k]
 				self.fresh(row_unique,col_unique)
-			else:
+			if len(num_unsure_position[k])>1:
+				###排除长度为0的错误情况
 				###如果位置有信息
 				row_list,col_list=zip(*num_unsure_position[k])
 				if block:
@@ -209,7 +209,7 @@ class solver(object):
 			for col in range(9):
 				if state!=2:
 					break
-				if len(task[row][col])==2:
+				if len(self.matrix[row][col])==2:
 					state=self.guess(row,col)
 
 	def solve_shudu(self):
@@ -226,9 +226,9 @@ class solver(object):
 
 
 if __name__=="__main__":
-	matrix=input("input a matrix like \"123...456\",\"234.....89\",... or demo")
+	matrix=input("input a matrix like \"123...456\",\"234.....89\",... or demo\n")
 	if matrix=="demo":
-		solution=self.solve_shudu()
+		solution=solve_shudu()
 	else:
 		matrix=[string for string in matrix.split(",")]
 		solution=solve_shudu(matrix)
