@@ -226,10 +226,10 @@ class solver(object):
 
 
 if __name__=="__main__":
-	matrix=input("input a matrix like \"123...456\",\"234.....89\",... or demo\n")
+	matrix=input("input a matrix like \"123...456\",\"234.....89\",... or demo\n\n")
 	if matrix=="demo":
-		solution=solve_shudu()
+		solution=solver()
 	else:
 		matrix=[string for string in matrix.split(",")]
-		solution=solve_shudu(matrix)
+		solution=solver(matrix)
 	solution.solve_shudu()
